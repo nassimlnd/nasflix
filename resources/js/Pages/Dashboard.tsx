@@ -1,10 +1,13 @@
-import {Head} from '@inertiajs/react';
-import {PageProps} from '@/types';
+import { Head } from "@inertiajs/react";
+import { PageProps } from "@/types";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
-export default function Dashboard({auth}: PageProps) {
+export default function Dashboard({ auth }: PageProps) {
     return (
         <>
-            <Head title="Home"/>
+            <AuthenticatedLayout user={auth.user}>
+                <Head title="Home" />
+            </AuthenticatedLayout>
         </>
     );
 }
