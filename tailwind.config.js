@@ -1,5 +1,5 @@
-import forms from "@tailwindcss/forms"
-import defaultTheme from "tailwindcss/defaultTheme"
+import forms from "@tailwindcss/forms";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -77,8 +77,11 @@ export default {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
             },
+            backgroundImage: {
+                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            },
         },
     },
 
     plugins: [forms, require("tailwindcss-animate")],
-}
+};

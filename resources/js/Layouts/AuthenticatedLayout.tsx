@@ -1,21 +1,15 @@
-import { useState, PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { User } from "@/types";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import SidebarLink from "@/Components/SidebarLink";
-import { Film, Home } from "lucide-react";
-import Sidebar from "@/Components/Sidebar";
+import Sidebar from "@/Components/sidebar/Sidebar";
 
 export default function Authenticated({
     user,
     children,
 }: PropsWithChildren<{ user: User; header?: ReactNode }>) {
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
-
     return (
-        <div className="h-full w-full flex">
-            <Sidebar user={user} />
-            <div>{children}</div>
+        <div className="flex h-full w-full">
+            <Sidebar />
+            <div className="h-full w-full">{children}</div>
         </div>
     );
 }
