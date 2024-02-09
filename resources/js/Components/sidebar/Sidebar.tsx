@@ -35,7 +35,7 @@ type SidebarLinkProps = {
 
 export default function Sidebar() {
     return (
-        <div className="fixed w-[400px] h-screen border-r flex flex-col">
+        <div className="fixed w-[350px] h-screen border-r flex flex-col">
             <SidebarHeader>
                 <div className="flex items-center gap-6">
                     <ApplicationLogo className={"w-10 h-fit"} />
@@ -51,7 +51,11 @@ export default function Sidebar() {
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel>Menu</SidebarGroupLabel>
-                    <SidebarLink href={""} icon={<Home />} text="Home" />
+                    <SidebarLink
+                        href={route("dashboard")}
+                        icon={<Home />}
+                        text="Home"
+                    />
                     <SidebarLink href={""} icon={<Compass />} text="Discover" />
                     <SidebarLink href={""} icon={<Award />} text="Awards" />
                 </SidebarGroup>
@@ -74,11 +78,16 @@ export default function Sidebar() {
                 <SidebarGroup>
                     <SidebarGroupLabel>General</SidebarGroupLabel>
                     <SidebarLink
-                        href={""}
+                        href={route("profile.settings")}
                         icon={<Settings />}
                         text="Settings"
                     />
-                    <SidebarLink href={""} icon={<LogOut />} text="Logout" />
+                    <SidebarLink
+                        method="post"
+                        href={route("logout")}
+                        icon={<LogOut />}
+                        text="Logout"
+                    />
                 </SidebarGroup>
             </SidebarContent>
         </div>

@@ -10,7 +10,7 @@ export default function Authenticated({
     return (
         <div className="flex h-full w-full">
             <Sidebar />
-            <div className="ml-[400px] h-full w-full">{children}</div>
+            <div className="ml-[350px] h-full w-full">{children}</div>
         </div>
     );
 }

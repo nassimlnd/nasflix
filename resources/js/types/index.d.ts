@@ -8,9 +8,31 @@ export interface User {
 export interface Movie {
     id: number;
     title: string;
-    category: string;
-    duration: string;
-    image: string;
+    tvg_id: string;
+    tvg_name: string;
+    tvg_logo: string;
+    group_title: string;
+    url: string;
+}
+
+export interface Serie {
+    id: number;
+    title: string;
+    tvg_id: string;
+    tvg_name: string;
+    tvg_logo: string;
+    group_title: string;
+    url: string;
+}
+
+export interface TvShow {
+    id: number;
+    title: string;
+    tvg_id: string;
+    tvg_name: string;
+    tvg_logo: string;
+    group_title: string;
+    url: string;
 }
 
 export type PageProps<
