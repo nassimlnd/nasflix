@@ -1,6 +1,5 @@
 import React from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { User } from "@/types";
 import {
     Award,
     CheckCircle2,
@@ -36,7 +35,7 @@ type SidebarLinkProps = {
 
 export default function Sidebar() {
     return (
-        <div className="w-[400px] border-r flex flex-col">
+        <div className="fixed w-[400px] h-screen border-r flex flex-col">
             <SidebarHeader>
                 <div className="flex items-center gap-6">
                     <ApplicationLogo className={"w-10 h-fit"} />
