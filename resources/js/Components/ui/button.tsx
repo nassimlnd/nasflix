@@ -18,7 +18,7 @@ const buttonVariants = cva(
                 secondary:
                     "justify-center bg-secondary text-secondary-foreground hover:bg-secondary/80",
                 ghost: "justify-center hover:bg-accent hover:text-accent-foreground",
-                link: "justify-center text-primary underline-offset-4 hover:underline",
+                link: "justify-center text-primary hover:underline underline-offset-8 decoration-primary decoration-2",
                 sidebarlink:
                     "hover:bg-accent hover:text-accent-foreground w-full justify-start gap-6 py-6",
             },
