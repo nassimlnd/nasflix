@@ -2,14 +2,7 @@ import { Head, Link } from "@inertiajs/react";
 import { Movie, PageProps, User } from "@/types";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Input } from "@/Components/ui/input";
-import {
-    ArrowLeft,
-    Bell,
-    ChevronLeft,
-    ChevronRight,
-    Plus,
-    Search,
-} from "lucide-react";
+import { Bell, ChevronLeft, ChevronRight, Plus, Search } from "lucide-react";
 import { Button, buttonVariants } from "@/Components/ui/button";
 import {
     DropdownMenu,
@@ -122,7 +115,7 @@ export default function Dashboard({
                                     </DropdownMenuItem>
                                     <DropdownMenuItem className="p-0">
                                         <Link
-                                            href={""}
+                                            href={route("profile.settings")}
                                             className="w-full px-2 py-1.5"
                                         >
                                             Settings
@@ -146,9 +139,9 @@ export default function Dashboard({
                         <div className="w-full mt-16">
                             <div className="max-w-5xl mx-auto relative">
                                 <img
-                                    src="/assets/images/Picture.png"
+                                    src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/wKVBcZn7v7PH7jbjMGtP4Vhd1Rx.jpg"
                                     alt="Movie"
-                                    className="w-full rounded-lg"
+                                    className="w-full max-h-[400px] object-cover rounded-lg"
                                 />
                                 <div className="absolute flex flex-col justify-between top-0 left-0 px-12 py-8 w-full h-full">
                                     <p className="text-4xl font-bold pt-4">
@@ -187,14 +180,14 @@ export default function Dashboard({
                                     Popular on Nasflix
                                 </h2>
                                 <div className="flex flex-wrap gap-6 max-w-full">
-                                    {data.map((movie) => {
+                                    {data.slice(0, 20).map((movie) => {
                                         return (
                                             <MovieCard
                                                 key={movie.id}
-                                                title={movie.title}
-                                                category={movie.category}
-                                                duration={movie.duration}
-                                                image={movie.image}
+                                                title={movie.tvg_name}
+                                                category={movie.group_title}
+                                                duration={"0"}
+                                                image={movie.tvg_logo}
                                             />
                                         );
                                     })}

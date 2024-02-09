@@ -15,6 +15,7 @@ export default function MovieCard({
     duration,
     image,
 }: MovieCardProps) {
+    console.log(image);
     return (
         <div className="w-fit rounded-lg relative">
             <img src={image} alt="Movie" className="max-w-[200px] rounded-lg" />
