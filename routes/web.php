@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\M3UController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,24 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/profile/settings', function () {
+    return Inertia::render('Profile/Settings', [
+        'user' => auth()->user(),
+    ]);
+})->middleware(['auth'])->name('profile.settings');
+
+Route::get('/profile/settings/m3u', function () {
+    return Inertia::render('Profile/Settings/M3USettings', [
+        'user' => auth()->user(),
+    ]);
+})->middleware(['auth'])->name('profile.settings.m3u');
+
+Route::post('/profile/settings/m3u', [M3UController::class, 'store'])->middleware(['auth'])->name('profile.settings.m3u.store');
+
+Route::get('/player', function () {
+    return Inertia::render('Player/Player');
+})->name('player');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
