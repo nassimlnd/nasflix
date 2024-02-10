@@ -15,7 +15,10 @@ class FileController extends Controller
 
         $destinationPath = public_path('movies/mkv/' . $fileName);
 
-        exec("wget -O \"$url\" -P \"$destinationPath\"", $output, $return);
+        $command = "wget -O $destinationPath $url";
+        error_log("Command : " . $command);
+
+        exec($command, $output, $return);
 
         if ($return === 0 && file_exists($destinationPath)) {
             error_log("File downloaded successfully!");
