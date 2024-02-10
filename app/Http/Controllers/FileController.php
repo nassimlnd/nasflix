@@ -15,7 +15,7 @@ class FileController extends Controller
 
         $destinationPath = public_path('movies/mkv/' . $fileName);
 
-        $command = "wget -O $destinationPath $url";
+        $command = "wget -O $url -P $destinationPath";
         error_log("Command : " . $command);
 
         exec($command, $output, $return);
