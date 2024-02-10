@@ -1,8 +1,11 @@
 import { Plus } from "lucide-react";
 import React from "react";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
+import { Link } from "@inertiajs/react";
+import { cn } from "@/lib/utils";
 
 type MovieCardProps = {
+    id: any;
     title: string;
     category: string;
     duration: string;
@@ -10,12 +13,12 @@ type MovieCardProps = {
 };
 
 export default function MovieCard({
+    id,
     title,
     category,
     duration,
     image,
 }: MovieCardProps) {
-    console.log(image);
     return (
         <div className="w-fit rounded-lg relative">
             <img src={image} alt="Movie" className="max-w-[200px] rounded-lg" />
@@ -34,7 +37,15 @@ export default function MovieCard({
                         >
                             <Plus />
                         </Button>
-                        <Button className="w-full">Watch</Button>
+                        <Link
+                            href={`/watch/movie/${id}`}
+                            className={cn(
+                                buttonVariants({ variant: "default" }),
+                                "w-full"
+                            )}
+                        >
+                            Watch
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\M3UController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\M3UController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,8 @@ Route::post('/profile/settings/m3u', [M3UController::class, 'store'])->middlewar
 Route::get('/player', function () {
     return Inertia::render('Player/Player');
 })->name('player');
+
+Route::get('/watch/movie/{id}', [PlayerController::class, 'index'])->middleware(['auth'])->name('watch.movie');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
