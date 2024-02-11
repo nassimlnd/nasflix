@@ -4,15 +4,16 @@ import { Movie, Serie, TvShow, User } from "@/types";
 import { Head, Link } from "@inertiajs/react";
 import axios from "axios";
 import { ChevronRight } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 
 type MediaProps = {
     media: Movie | Serie | TvShow;
     user: User;
+    data: any;
 };
 
-export default function Media({ media, user }: MediaProps) {
+export default function Media({ media, user, data }: MediaProps) {
     const handleWatchNow = () => {
         axios
             .post(route("media.download"), {
@@ -49,16 +50,15 @@ export default function Media({ media, user }: MediaProps) {
                                             {media.title || media.tvg_name}
                                         </h1>
                                         <p className="text-muted-foreground">
-                                            Lorem ipsum dolor sit amet,
-                                            consectetur adipisicing elit. Id
-                                            provident reiciendis odio ipsa sint
-                                            vel autem! Nihil, animi nisi
-                                            possimus quod obcaecati eum quos?
-                                            Sunt a modi quo accusamus ducimus.
+                                            {data.overview ?? "No overview"}
                                         </p>
-                                        <Button onClick={handleWatchNow}>
-                                            Watch Now
-                                        </Button>
+                                        {media.state === "active" ? (
+                                            <Button onClick={handleWatchNow}>
+                                                Watch Now
+                                            </Button>
+                                        ) : (
+                                            <Button>Download now</Button>
+                                        )}
                                     </div>
                                     <div>
                                         <img
@@ -68,7 +68,7 @@ export default function Media({ media, user }: MediaProps) {
                                         />
                                     </div>
                                 </div>
-                                <div className="space-y-2">
+                                {/*<div className="space-y-2">
                                     <h2 className="text-2xl mt-10">
                                         Distribution
                                     </h2>
@@ -80,13 +80,24 @@ export default function Media({ media, user }: MediaProps) {
                                         obcaecati eum quos? Sunt a modi quo
                                         accusamus ducimus.
                                     </p>
-                                </div>
+                                        </div>*/}
+                                {true ? (
+                                    <div className="space-y-6">
+                                        <h2 className="text-2xl mt-10">
+                                            Lecteur
+                                        </h2>
+                                        <ReactPlayer
+                                            url={media.url}
+                                            controls
+                                            width="100%"
+                                            height="700px"
+                                        />
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
                             </div>
                         </div>
-
-                        <video>
-                            <source src={"120599.mkv.mp4"} type="video/mp4" />
-                        </video>
                     </>
                 ) : (
                     <div>

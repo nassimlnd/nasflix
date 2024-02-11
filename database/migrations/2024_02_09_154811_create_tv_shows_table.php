@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('group_title')->nullable();
             $table->string('title');
             $table->string('url');
+            $table->string('state')->default('non-available');
             $table->timestamps();
         });
     }

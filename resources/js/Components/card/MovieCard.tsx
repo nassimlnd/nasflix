@@ -21,7 +21,12 @@ export default function MovieCard({
 }: MovieCardProps) {
     return (
         <div className="w-fit rounded-lg relative">
-            <img src={image} alt="Movie" className="max-w-[200px] rounded-lg" />
+            <img
+                src={image}
+                alt="Movie"
+                className="max-w-[200px] rounded-lg"
+                loading="lazy"
+            />
             <div className="absolute top-0 left-0 px-4 py-4 flex flex-col justify-between w-full h-full bg-gradient-radial from-transparent to-black/75">
                 <p className="font-extrabold text-xl">{title}</p>
                 <div className="space-y-1">
