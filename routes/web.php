@@ -44,9 +44,13 @@ Route::get('/player', function () {
     return Inertia::render('Player/Player');
 })->name('player');
 
-Route::get('/testdownload', [FileController::class, 'downloadAndStore']);
-
 Route::get('/watch/movie/{id}', [PlayerController::class, 'index'])->middleware(['auth'])->name('watch.movie');
+Route::get('/watch/serie/{id}', [PlayerController::class, 'index'])->middleware(['auth'])->name('watch.serie');
+Route::get('/watch/tvshow/{id}', [PlayerController::class, 'index'])->middleware(['auth'])->name('watch.tvshow');
+
+Route::post('/media/download', [FileController::class, 'downloadAndStore'])->middleware(['auth'])->name('media.download');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

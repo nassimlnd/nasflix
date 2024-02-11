@@ -12,9 +12,9 @@ class PlayerController extends Controller
     {
         $movie = Movie::find($id);
 
-        return Inertia::render('Player/Player', [
+        return Inertia::render('Media', [
             'user' => auth()->user(),
-            'movie' => $movie,
+            'media' => $movie,
         ]);
     }
 }
