@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\X264;
 use Http;
 use Illuminate\Http\Request;
 
@@ -23,12 +25,21 @@ class FileController extends Controller
             }
         }
 
+        $urlExploded = explode('/', $movie['url']);
 
+        $fileName = end($urlExploded);
 
-        /*$fileName = basename($movie['url']);
-        $path = storage_path('app/public/' . $fileName);
+        FileController::convertMkvToMp4($fileName);
 
-        file_put_contents($path, $file);*/
         return response()->json(['message' => 'File downloaded and stored successfully']);
+    }
+
+    public function convertMkvToMp4(string $fileName)
+    {
+        $ffmpeg = FFMpeg::create();
+        $video = $ffmpeg->open($fileName);
+        $video->save(new X264(), $fileName . '.mp4');
+
+        return response()->json(['message' => 'File converted successfully']);
     }
 }
