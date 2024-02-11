@@ -3,17 +3,16 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Movie, Serie, TvShow, User } from "@/types";
 import { Head, Link } from "@inertiajs/react";
 import axios from "axios";
-import { ChevronRight } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { ChevronRight, PlusCircle } from "lucide-react";
 import ReactPlayer from "react-player";
 
-type MediaProps = {
+interface MediaPlayerProps {
     media: Movie | Serie | TvShow;
     user: User;
     data: any;
-};
+}
 
-export default function Media({ media, user, data }: MediaProps) {
+export default function MediaPlayer({ media, user, data }: MediaPlayerProps) {
     const handleWatchNow = () => {
         axios
             .post(route("media.download"), {
@@ -53,11 +52,29 @@ export default function Media({ media, user, data }: MediaProps) {
                                             {data.overview ?? "No overview"}
                                         </p>
                                         {media.state === "active" ? (
-                                            <Button onClick={handleWatchNow}>
-                                                Watch Now
-                                            </Button>
+                                            <div className="flex items-center gap-2">
+                                                <Button
+                                                    onClick={handleWatchNow}
+                                                >
+                                                    Watch now
+                                                </Button>
+                                                <Button
+                                                    variant={"secondary"}
+                                                    size={"icon"}
+                                                >
+                                                    <PlusCircle />
+                                                </Button>
+                                            </div>
                                         ) : (
-                                            <Button>Download now</Button>
+                                            <div className="flex items-center gap-2">
+                                                <Button>Download now</Button>
+                                                <Button
+                                                    variant={"secondary"}
+                                                    size={"icon"}
+                                                >
+                                                    <PlusCircle />
+                                                </Button>
+                                            </div>
                                         )}
                                     </div>
                                     <div>
@@ -86,12 +103,6 @@ export default function Media({ media, user, data }: MediaProps) {
                                         <h2 className="text-2xl mt-10">
                                             Lecteur
                                         </h2>
-                                        <ReactPlayer
-                                            url={media.url}
-                                            controls
-                                            width="100%"
-                                            height="700px"
-                                        />
                                     </div>
                                 ) : (
                                     <></>

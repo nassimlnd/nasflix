@@ -29,7 +29,7 @@ class PlayerController extends Controller
             $data = null;
         }
 
-        return Inertia::render('Media', [
+        return Inertia::render('Media/MediaPlayer', [
             'user' => auth()->user(),
             'media' => $movie,
             'data' => $data
