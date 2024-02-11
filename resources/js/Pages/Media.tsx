@@ -5,6 +5,7 @@ import { Head, Link } from "@inertiajs/react";
 import axios from "axios";
 import { ChevronRight } from "lucide-react";
 import React from "react";
+import ReactPlayer from "react-player";
 
 type MediaProps = {
     media: Movie | Serie | TvShow;
@@ -82,6 +83,8 @@ export default function Media({ media, user }: MediaProps) {
                                 </div>
                             </div>
                         </div>
+
+                        <ReactPlayer src="/120599.mkv.mp4" controls />
                     </>
                 ) : (
                     <div>

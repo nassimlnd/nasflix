@@ -45,7 +45,7 @@ class FileController extends Controller
         $video->save(new X264(), $fileName . '.mp4');
         error_log('File converted successfully');*/
 
-        $command = 'ffmpeg -i ' . $fileName . ' -c ' . $fileName . '.mp4';
+        $command = 'ffmpeg -i ' . $fileName . ' -c copy' . $fileName . '.mp4';
 
         error_log('Converting file ' . $fileName . ' to mp4');
         exec($command, $output, $status);
