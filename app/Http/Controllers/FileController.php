@@ -12,7 +12,7 @@ class FileController extends Controller
         // Get the media from the request
         $movie = $request->post('media');
 
-        $command = 'wget -c ' . $movie['url'] . " -P /assets";
+        $command = 'wget -c ' . $movie['url'] . " ";
 
         $status = 0;
 
