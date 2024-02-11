@@ -180,9 +180,10 @@ export default function Dashboard({
                                     Popular on Nasflix
                                 </h2>
                                 <div className="flex flex-wrap gap-6 max-w-full">
-                                    {data.slice(0, 20).map((movie) => {
+                                    {data.slice(650, 700).map((movie) => {
                                         return (
                                             <MovieCard
+                                                id={movie.id}
                                                 key={movie.id}
                                                 title={movie.tvg_name}
                                                 category={movie.group_title}

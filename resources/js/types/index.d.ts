@@ -13,6 +13,7 @@ export interface Movie {
     tvg_logo: string;
     group_title: string;
     url: string;
+    state: string;
 }
 
 export interface Serie {
@@ -23,6 +24,7 @@ export interface Serie {
     tvg_logo: string;
     group_title: string;
     url: string;
+    state: string;
 }
 
 export interface TvShow {
@@ -33,6 +35,7 @@ export interface TvShow {
     tvg_logo: string;
     group_title: string;
     url: string;
+    state: string;
 }
 
 export type PageProps<

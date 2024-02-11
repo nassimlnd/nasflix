@@ -1,18 +1,29 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
-import { User } from "@/types";
+import { Movie, User } from "@/types";
 import React from "react";
 import ReactPlayer from "react-player";
 
-export default function Player({ user }: { user: User }) {
+interface PlayerProps {
+    user: User;
+    movie: Movie;
+}
+
+export default function Player({ user, movie }: PlayerProps) {
     return (
         <>
             <Authenticated user={user}>
-                <ReactPlayer
-                    url="http://r365mail.biz:2103/movie/Cr5ZQUazyj/430866556543/120476.mkv"
+                {/*<ReactPlayer
+                    volume={1}
+                    url={movie.url}
                     width={"100%"}
                     height={"100%"}
                     controls
-                />
+                />*/}
+                <video
+                    src={movie.url}
+                    controls
+                    className="w-full h-full"
+                ></video>
             </Authenticated>
         </>
     );

@@ -15,6 +15,7 @@ class TvShow extends Model
         'tvg_logo',
         'group_title',
         'title',
-        'url'
+        'url',
+        'state'
     ];
 }
