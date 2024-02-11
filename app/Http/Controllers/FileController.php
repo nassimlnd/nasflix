@@ -39,9 +39,17 @@ class FileController extends Controller
 
     public function convertMkvToMp4(string $fileName)
     {
-        $ffmpeg = FFMpeg::create();
+        /*$ffmpeg = FFMpeg::create();
         $video = $ffmpeg->open($fileName);
+        error_log('Converting file ' . $fileName . ' to mp4');
         $video->save(new X264(), $fileName . '.mp4');
+        error_log('File converted successfully');*/
+
+        $command = 'ffmpeg -i ' . $fileName . ' -c ' . $fileName . '.mp4';
+
+        error_log('Converting file ' . $fileName . ' to mp4');
+        exec($command, $output, $status);
+        error_log('File converted successfully');
 
         return 'File converted successfully';
     }
