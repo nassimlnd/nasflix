@@ -29,9 +29,9 @@ class FileController extends Controller
 
         $fileName = end($urlExploded);
 
-        FileController::convertMkvToMp4($fileName);
+        $res = FileController::convertMkvToMp4($fileName);
 
-        return response()->json(['message' => 'File downloaded and stored successfully']);
+        return response()->json(['message' => 'File downloaded and stored successfully' . $res]);
     }
 
     public function convertMkvToMp4(string $fileName)
@@ -40,6 +40,6 @@ class FileController extends Controller
         $video = $ffmpeg->open($fileName);
         $video->save(new X264(), $fileName . '.mp4');
 
-        return response()->json(['message' => 'File converted successfully']);
+        return 'File converted successfully';
     }
 }
