@@ -84,7 +84,9 @@ export default function Media({ media, user }: MediaProps) {
                             </div>
                         </div>
 
-                        <ReactPlayer url={"/120599.mkv.mp4"} controls />
+                        <video>
+                            <source src={"120599.mkv.mp4"} type="video/mp4" />
+                        </video>
                     </>
                 ) : (
                     <div>
